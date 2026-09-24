@@ -25,7 +25,7 @@ livros_coletados = []
 while True:
     print(f"\n -----  Página {pagina_num}  -----")
 
-     #NOVO: Marca o instante em que terminamos de processar a pagina
+    # NOVO: Marca o instante em que começamos a processar esta página
     inicio_pagina = time.time()
 
     # Encontra a lista inicial apenas para saber a quantidade
@@ -92,10 +92,11 @@ while True:
             EC.presence_of_element_located((By.XPATH, "//h3/a[@title]"))
         )
 
-        #NOVO: Marca o instante em que terminamos de processar esta pagina
-        fim_pagina = time.time()
-        tempo_pagina = fim_pagina - inicio_pagina
-        print(f"Tempo gasto na pagina ({pagina_num}): {tempo_pagina:.2f} segundos")
+    # NOVO: Marca o instante em que terminamos de processar esta página
+    # (fica FORA do for, pois só deve rodar uma vez, depois que TODOS os livros já foram clicados)
+    fim_pagina = time.time()
+    tempo_pagina = fim_pagina - inicio_pagina
+    print(f"Tempo gasto na pagina ({pagina_num}): {tempo_pagina:.2f} segundos")
 
     # Depois de clicar em TODOS os livros da página atual, tenta ir pra próxima página
     try:
