@@ -25,6 +25,9 @@ livros_coletados = []
 while True:
     print(f"\n -----  Página {pagina_num}  -----")
 
+     #NOVO: Marca o instante em que terminamos de processar a pagina
+    inicio_pagina = time.time()
+
     # Encontra a lista inicial apenas para saber a quantidade
     clicar = navegador.find_elements(By.XPATH, "//h3/a[@title]")
     quantidade_cliques = len(clicar)
@@ -88,6 +91,11 @@ while True:
         WebDriverWait(navegador, 10).until(
             EC.presence_of_element_located((By.XPATH, "//h3/a[@title]"))
         )
+
+        #NOVO: Marca o instante em que terminamos de processar esta pagina
+        fim_pagina = time.time()
+        tempo_pagina = fim_pagina - inicio_pagina
+        print(f"Tempo gasto na pagina ({pagina_num}): {tempo_pagina:.2f} segundos")
 
     # Depois de clicar em TODOS os livros da página atual, tenta ir pra próxima página
     try:
