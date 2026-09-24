@@ -18,12 +18,21 @@ Web scraper feito com **Selenium** e **Python** que coleta dados de livros do si
 
 Os arquivos são salvos em `Documentos/resultados` na pasta do usuário logado no sistema.
 
+## ⏱️ Medição de tempo (timer)
+
+O script marca o instante em que começa a processar cada página (`inicio_pagina`) e, após percorrer **todos** os livros dela, calcula e exibe no console o tempo total gasto:
+
+```
+Tempo gasto na pagina (1): 12.45 segundos
+```
+
 ## 🛠️ Tecnologias utilizadas
 
 - **Selenium** — automação do navegador
 - **Pandas** — organização dos dados em tabela e exportação para CSV/Excel
 - **re (Regex)** — extração de números de preço e estoque a partir do texto bruto da página
 - **os** — manipulação de caminhos de arquivos multiplataforma
+- **time** — medição do tempo de execução por página
 
 ## 📦 Pré-requisitos
 
@@ -61,6 +70,7 @@ C:\Users\<seu_usuario>\Documents\resultados\
 - Recaptura dos elementos a cada iteração do loop (`find_elements` dentro do `for`) para evitar o erro `StaleElementReferenceException`, comum quando o DOM muda após navegação.
 - Uso de expressões regulares para limpar e converter texto bruto (preço e estoque) em tipos numéricos utilizáveis.
 - Tratamento de exceção (`NoSuchElementException`) para detectar automaticamente o fim da paginação.
+- Medição de tempo por página com o módulo `time`, útil para acompanhar performance da coleta.
 
 ## 📝 Licença
 
